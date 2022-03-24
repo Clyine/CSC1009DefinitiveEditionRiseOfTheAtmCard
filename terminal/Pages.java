@@ -1,6 +1,7 @@
 package terminal;
 
 import java.io.*;
+import java.net.Socket;
 import java.util.*;
 
 
@@ -53,15 +54,22 @@ public class Pages {
             this.dos.writeUTF("Please enter your pin no.: ");
             String pin = this.dis.readUTF();
 
-            this.controller = new SystemController(this.d.getAccount(accountNum));
+            try {
+                this.controller = new SystemController(this.d.getAccount(accountNum));
 
-            if (!this.controller.getPin().equals(pin)) {
-                this.dos.writeUTF("Invalid username or PIN!");
+                if (!this.controller.getPin().equals(pin)) {
+                    this.dos.writeUTF("Invalid username or PIN! Press enter to continue");
+                    this.controller = null;
+                    login();
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                this.dos.writeUTF("Invalid username or PIN! + Press enter to continue");
+                this.dis.readUTF();
                 this.controller = null;
-                login();
-            } else {
-                break;
             }
+
         }
     }
 
@@ -249,4 +257,5 @@ public class Pages {
             return generateCurrAccNo(d);
         }
     }
+
 }
