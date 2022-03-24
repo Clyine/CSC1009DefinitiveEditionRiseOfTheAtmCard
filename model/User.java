@@ -19,7 +19,7 @@ public class User {
     public String getPin() {
         return this.pin;
     }
-
+    
     public void setPin(String pin) {
         this.pin = pin;
     }
