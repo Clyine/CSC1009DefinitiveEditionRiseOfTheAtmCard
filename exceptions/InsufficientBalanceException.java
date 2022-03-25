@@ -7,4 +7,8 @@ public class InsufficientBalanceException extends Exception{
     public String getMessage(){
         return this.msg;
     }
+
+    public String WithdrawalLimitExceedException(long withdrawlimit) {
+        return null;
+    }
 }

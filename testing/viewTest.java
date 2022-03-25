@@ -13,6 +13,7 @@ import controller.*;
 import model.*;
 import view.*;
 import view.AccountView;
+import view.CurrentAccView;
 
 public class viewTest {
 
@@ -65,10 +66,18 @@ public class viewTest {
     }
 
     @Test
-    void printOverdraftLimitTest() throws IOException{
-
+    void printOverdraftLimitTest() throws IOException{ // PASSED
+        for (int i=0; i < MAX; i++){                  
+            long balance = (r.nextLong((100000 - 100) + 1) + 100);
+            String str1 = String.format("%d", 4000000000l + r.nextLong(10000000));
+            String str2 = (r.nextInt((1000000 - 100) + 1) + 100) + "";
+            Account acc = new SavingsAcc(str1,str2);
+            SystemController controller = new SystemController(acc);
+            controller.addDeposit(balance);
+            String msg = controller.printOverdraftLimit();
+            assertTrue(msg instanceof String);
     }
 
-    
+    }
     
 }
