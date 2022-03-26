@@ -2,26 +2,18 @@ package testing;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
-
-import javax.swing.text.View;
 
 import org.junit.jupiter.api.Test;
 import controller.*;
 import model.*;
-import view.*;
 import view.AccountView;
-import view.CurrentAccView;
 
 public class viewTest {
 
     static int MAX = 20;
     Random r = new Random();
     protected AccountView view;
-    private SystemController controller;
-    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Test
     void printBalanaceTest() throws IOException{ // Passed

@@ -1,7 +1,6 @@
 package testing;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -96,7 +95,6 @@ public class modelsTest {
             Transaction T = controller.addDeposit(amt);
             long withdrawal = r.nextInt((1000000 - 100) + 1) + 100;
             T = controller.addWithdrawal(withdrawal);
-            // Transaction newT = new Transaction(dateFormat.format(new Date()), dateFormat.format(new Date()), "", "New Withdrawal", amt, 0l, model.getBalance() - amt);
             String msg = acc.getTransactionListing(i);
             assertTrue(msg instanceof String);
         }
