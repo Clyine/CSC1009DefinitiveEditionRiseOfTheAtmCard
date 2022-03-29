@@ -41,7 +41,8 @@ public class Validate {
 
     public Long validateAmount(String str) throws NumberFormatException, IOException{
         try{
-            long amt = (long)((Double.parseDouble(str))*100);
+            str = str.replaceAll("[\\n\\t ]","");
+            long amt = (long)((Float.parseFloat(str))*100);
 
             if (amt <= 0) {
                 throw new NegativeInputException();

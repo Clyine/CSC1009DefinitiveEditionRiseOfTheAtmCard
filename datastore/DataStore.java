@@ -116,8 +116,8 @@ public class DataStore {
                 // close line scanner
                 lineScan.close();
 
-                System.out.println(accountNum);
-                System.out.println(data.keySet());
+                //System.out.println(accountNum);
+                //System.out.println(data.keySet());
                 if (data.get(accountNum) == null) {
                     throw new Exception("Account number not initialised");
                 }
@@ -194,8 +194,8 @@ public class DataStore {
 
         str += controller.getAccNo() + ",";
         str += controller.getPin() + ",";
-        str += String.format("%.2f", (double) controller.getWithdrawalLimit() / 100)+ ",";
-        str += String.format("%.2f", (double) controller.getOverdraftLimit() / 100 * -1)+ ",";
+        str += String.format("%.2f", (double)(controller.getWithdrawalLimit())/100)+ ",";
+        str += String.format("%.2f", (double)(controller.getOverdraftLimit())/100*-1)+ ",";
 
         try {
             FileWriter fw = new FileWriter(csvFilename, true);

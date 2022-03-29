@@ -49,23 +49,27 @@ public class Pages {
         
     public void login() throws Exception{
         while (true) {
-            this.dos.writeUTF("\nPlease enter your username.: ");
-            String accountNum = this.dis.readUTF(); //read from RFID
+            this.dos.writeUTF("SCANRFID");
+            String accountNum = this.dis.readUTF().replaceAll("[\\n\\t ]",""); //read from RFID
             this.dos.writeUTF("Please enter your pin no.: ");
             String pin = this.dis.readUTF();
 
             try {
                 this.controller = new SystemController(this.d.getAccount(accountNum));
+                System.out.println(this.controller.getPin());
+                //System.out.println("db:"+pin);
 
                 if (!this.controller.getPin().equals(pin)) {
-                    this.dos.writeUTF("Invalid username or PIN! Press enter to continue");
+                    
+                    this.dos.writeUTF("Invalid username or PIN! Press enter to continue\n");
                     this.controller = null;
-                    login();
+                    this.dis.readUTF();
+                    //login();
                 } else {
                     break;
                 }
             } catch (Exception e) {
-                this.dos.writeUTF("Invalid username or PIN! + Press enter to continue");
+                this.dos.writeUTF("Invalid username or PIN! + Press enter to continue\n");
                 this.dis.readUTF();
                 this.controller = null;
             }

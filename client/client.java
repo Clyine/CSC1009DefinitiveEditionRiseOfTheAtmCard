@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import pi_auth.*;
 
 // Client class
 public class client {
@@ -9,7 +10,8 @@ public class client {
             Scanner scn = new Scanner(System.in);
 
             // getting localhost ip
-            InetAddress ip = InetAddress.getByName("localhost");
+            //InetAddress ip = InetAddress.getByName("localhost");
+            String ip = "192.168.1.130"; //change this to address of server
 
             // establish the connection with server port 3333
             Socket s = new Socket(ip, 3333);
@@ -17,16 +19,26 @@ public class client {
             // obtaining input and out streams
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-            Boolean flag = false;
+            //Boolean flag = false;
 
             // the following loop performs the exchange of
             // information between client and client handler
             while (true) {
-                System.out.println(dis.readUTF());
-
-                String tosend;
-                tosend = scn.nextLine();
-                dos.writeUTF(tosend);
+                String dataIn = dis.readUTF();
+                System.out.println(dataIn);
+                String tosend = "";
+                if (dataIn.equals("SCANRFID")){
+                    Auth newAuth = new Auth();
+                    String cardID = newAuth.getCard();
+                    dos.writeUTF(cardID);
+                } else {
+                    tosend = scn.nextLine();
+                    dos.writeUTF(tosend);
+                }
+                //System.out.println(dis.readUTF());
+                // String tosend;
+                // tosend = scn.nextLine();
+                // dos.writeUTF(tosend);
 
                 // If client sends exit,close this connection
                 // and then break from the while loop
