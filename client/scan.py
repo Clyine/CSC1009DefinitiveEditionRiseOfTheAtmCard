@@ -10,7 +10,7 @@ while s not in ['break', 'quit']:
     if s == 'presentcard':
         try:
             id, text = reader.read()
-            sys.stdout.write("id: {} text:{}".format(id,text) + '\n')
+            sys.stdout.write("{}".format(text) + '\n')
         except:
             sys.stdout.write("null" + '\n')
     else:

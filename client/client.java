@@ -1,3 +1,4 @@
+//import java packages
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -8,9 +9,6 @@ public class client {
     public static void main(String[] args) throws IOException {
         try {
             Scanner scn = new Scanner(System.in);
-
-            // getting localhost ip
-            //InetAddress ip = InetAddress.getByName("localhost");
             String ip = "192.168.1.130"; //change this to address of server
 
             // establish the connection with server port 3333
@@ -19,7 +17,6 @@ public class client {
             // obtaining input and out streams
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-            //Boolean flag = false;
 
             // the following loop performs the exchange of
             // information between client and client handler
@@ -35,10 +32,6 @@ public class client {
                     tosend = scn.nextLine();
                     dos.writeUTF(tosend);
                 }
-                //System.out.println(dis.readUTF());
-                // String tosend;
-                // tosend = scn.nextLine();
-                // dos.writeUTF(tosend);
 
                 // If client sends exit,close this connection
                 // and then break from the while loop
