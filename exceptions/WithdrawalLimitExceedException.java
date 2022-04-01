@@ -3,7 +3,7 @@ package exceptions;
 public class WithdrawalLimitExceedException extends Exception{
 
     long limit;
-    String msg = "Withdrawal amount exceeds designated withdrawal limit ($";
+    String msg = "Withdrawal amount exceeds designated withdrawal limit ($"; //this is our thrown exception message
 
     public WithdrawalLimitExceedException(long amt) {
         this.limit = amt;
@@ -12,6 +12,6 @@ public class WithdrawalLimitExceedException extends Exception{
 
     @Override
     public String getMessage(){
-        return this.msg;
+        return this.msg; // return message declared above
     }
 }

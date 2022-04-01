@@ -31,54 +31,54 @@ public class Transaction {
 
 
     public String getTransactionDate() {
-        return this.transactionDate;
+        return this.transactionDate;          //return the transaction date
     }
 
     public String getValueDate() {
-        return this.valueDate;
+        return this.valueDate;                //return the value date
     }
 
     public String getChequeNo() {
-        return this.chequeNo;
+        return this.chequeNo;               //return the cheque no
     }
 
     public String getDescription() {
-        return this.description;
+        return this.description;           //return the description 
     }
 
     public long getWithdraw() {
-        return this.withdraw;
+        return this.withdraw;                  //return the withdraw
     }
 
     public long getDeposit() {
-        return this.deposit;
+        return this.deposit;                    //return the deposit
     }
 
     public long getRunningBalance() {
-        return this.runningBalance;
+        return this.runningBalance;            //return the running balance
     }
 
 
     public void exportTransaction(String accNo){
-        String str = "";
-        String csvFilename = "bankTransactions.csv";
+        String str = "";                    //Create string str variable
+        String csvFilename = "bankTransactions.csv";    //Set the excel file name
 
-        str += accNo + ",";
-        str += this.transactionDate + ",";
-        str += this.description + ",";
-        str += this.chequeNo + ",";
-        str += this.valueDate + ",";
-        str += String.format("%.2f", (double)this.withdraw/100) + ",";
-        str += String.format("%.2f", (double)this.deposit/100) + ",";
-        str += String.format("%.2f", (double)this.runningBalance/100);  
+        str += accNo + ",";        // Retrieve account number and add to string, append a comma at the end
+        str += this.transactionDate + ",";   // Retrieve transaction date and add to string, append a comma at the end
+        str += this.description + ",";           // Retrieve account description and add to string, append a comma at the end
+        str += this.chequeNo + ",";                  // Retrieve cheque number and add to string, append a comma at the end
+        str += this.valueDate + ",";                    // Retrieve value date and add to string, append a comma at the end
+        str += String.format("%.2f", (double)this.withdraw/100) + ",";  // Retrieve withdraw amount and add to string, append a comma at the end
+        str += String.format("%.2f", (double)this.deposit/100) + ",";    // Retrieve deposit amount and add to string, append a comma at the end
+        str += String.format("%.2f", (double)this.runningBalance/100);  // Retrieve deposit amount and add to string, append a comma at the end
 
         try {
-            FileWriter fw = new FileWriter(csvFilename,true);
-            fw.append("\n");
-            fw.append(str);
-            fw.close();
+            FileWriter fw = new FileWriter(csvFilename,true);      // Set new file writer object
+            fw.append("\n");                                        // Add next line to end of object
+            fw.append(str);                                            // Add the strings declared above
+            fw.close();                                                 // Close the file writer object
         } catch (Exception e) {
-            System.out.println("Exception:" + e.getMessage());
+            System.out.println("Exception:" + e.getMessage());            // Throw exception message
         }
     }
 

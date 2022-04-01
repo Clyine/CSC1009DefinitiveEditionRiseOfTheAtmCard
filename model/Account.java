@@ -2,13 +2,14 @@ package model;
 import java.util.LinkedList;
 
 public class Account {
-    private String name = "";
-    private String pin;
-    private LinkedList<Transaction> transactionsList;
-    private long WithdrawalLimit = 0;
-    private long runningBalance = 0;
 
-    protected Account(String accNo, String pin) {
+    private String name = "";                                                  //declare private name variable
+    private String pin;                                                        // declare private pin variable
+    private LinkedList<Transaction> transactionsList;                         //declare private linkedlist variable
+    private long WithdrawalLimit = 0;                                          //declare private WithdrawalLimit variable
+    private long runningBalance = 0;                                           //declare private runningBalance variable
+
+    protected Account(String accNo, String pin) {                          //constuctor for account
         this.name = accNo;
         this.pin = pin;
         this.transactionsList = new LinkedList<Transaction>();
@@ -16,32 +17,32 @@ public class Account {
         this.WithdrawalLimit = 300000;
     }
 
-    public String getAccNo(){
+    public String getAccNo(){                //getAccNo function to return acc no
         return this.name;
     }
 
-    public long getBalance(){
+    public long getBalance(){              //getBalance function to return balance
         return this.runningBalance;
     }
 
-    public String getPin() {
+    public String getPin() {                 //getpin function to return pin
         return this.pin;
     }
 
-    public String setPin(String pin){
+    public String setPin(String pin){       //setpin funtion to set the pin
         return this.pin = pin;
     }
 
-    public long getWithdrawalLimit(){
+    public long getWithdrawalLimit(){       // getwithdrawllimit to return the withdrawallimit
         return this.WithdrawalLimit;
     }
 
-    public long setWithdrawalLimit(long amt) {
+    public long setWithdrawalLimit(long amt) {  //setWithdrawalLimit to return the set withdrawal limit
         this.WithdrawalLimit = amt;
         return this.WithdrawalLimit;
     }
     
-    public void addTransaction(Transaction t) {
+    public void addTransaction(Transaction t) {     //addTransaction to add transaction to the transaction list 
         this.transactionsList.add(t);
         this.runningBalance += t.getDeposit() - t.getWithdraw();
     }
@@ -62,7 +63,7 @@ public class Account {
         return str;
     }
 
-    public String getTransactionListing(int n){
+    public String getTransactionListing(int n){     //menu for the transaction list 
         String str = "";
         
         str += String.format("+-------------+------------+---------+------------------------------------------------------------+------------+------------+---------------+");

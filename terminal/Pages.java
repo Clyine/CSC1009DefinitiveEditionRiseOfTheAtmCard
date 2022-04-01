@@ -1,10 +1,7 @@
 package terminal;
 
 import java.io.*;
-import java.net.Socket;
 import java.util.*;
-
-
 import controller.*;
 import model.*;
 import datastore.*;
@@ -16,8 +13,6 @@ public class Pages {
     private final DataInputStream dis;
     private final DataOutputStream dos;
     private SystemController controller;
-    //private UserController currentUser;
-    //private AccountController currentAcc;
     private static final Random r = new Random();
     private final Validate v;
 
@@ -33,18 +28,18 @@ public class Pages {
         this.dos.writeUTF("Welcome to ABC ATM!\nEnter 1 to open a new account with us\nEnter 2 to login using an existing account\nPlease enter your choice: ");
         String selection = dis.readUTF(); //take input from Inputstream
         switch (selection) {
-                case "1":
-                    createAcc();
-                    break;
-                case "2":
-                    login();
-                    break;
-                default:
-                    dos.writeUTF("\nInvalid Selection. Press enter to continue");
-                    dis.readUTF();
-                    authPage();
-                    break;
-                }
+            case "1":
+                createAcc();
+                break;
+            case "2":
+                login();
+                break;
+            default:
+                dos.writeUTF("\nInvalid Selection. Press enter to continue");
+                dis.readUTF();
+                authPage();
+                break;
+            }
     }
         
     public void login() throws Exception{
@@ -57,14 +52,12 @@ public class Pages {
             try {
                 this.controller = new SystemController(this.d.getAccount(accountNum));
                 System.out.println(this.controller.getPin());
-                //System.out.println("db:"+pin);
 
                 if (!this.controller.getPin().equals(pin)) {
                     
                     this.dos.writeUTF("Invalid username or PIN! Press enter to continue\n");
                     this.controller = null;
                     this.dis.readUTF();
-                    //login();
                 } else {
                     break;
                 }
@@ -73,7 +66,6 @@ public class Pages {
                 this.dis.readUTF();
                 this.controller = null;
             }
-
         }
     }
 
@@ -189,7 +181,7 @@ public class Pages {
     }
 
     public void detailsPage() throws Exception {
-        this.dos.writeUTF("\nPlease select option:\n1)View Withdrawal Limit\n2)Set Withdrawal Limit\n3)View Overdraft Limit\n4)Set Overdraft Limit\n");
+        this.dos.writeUTF("\nPlease select option:\n1)View Withdrawal Limit\n2)Set Withdrawal Limit\n3)View Overdraft Limit\n4)Set Overdraft Limit\n5)Set Account Pin");
         String select = this.dis.readUTF();
         switch (select) {
             case "1":
@@ -219,6 +211,14 @@ public class Pages {
                 this.dos.writeUTF("Success, " + this.controller.printOverdraftLimit() + "\nPress enter to continue");
                 this.dis.readUTF();
                 }
+                break;
+            case "5":
+                this.dos.writeUTF("\nPlease input preferred PIN");
+                String newPin = v.validateStringNoSpecialChar(this.dis.readUTF());
+                this.controller.setPin(newPin);
+                this.d.writeHeader(controller);
+                this.dos.writeUTF("Success, Pin successfully changed\nPress enter to continue");
+                this.dis.readUTF();
                 break;
             default:
                 dos.writeUTF("\nInvalid Selection. Press enter to continue");
@@ -261,5 +261,4 @@ public class Pages {
             return generateCurrAccNo(d);
         }
     }
-
 }

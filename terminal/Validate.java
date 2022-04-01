@@ -17,6 +17,8 @@ public class Validate {
         this.dos = dos;
     }
 
+    
+
     public String validateStringNoSpecialChar(String str) throws Exception{
         try{
             if (str.matches(".*[\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\>\\=\\?\\@\\[\\]\\{\\}\\\\\\^\\_\\`\\~]+.*")) throw new Exception("Invalid input: No special characters allowed.");

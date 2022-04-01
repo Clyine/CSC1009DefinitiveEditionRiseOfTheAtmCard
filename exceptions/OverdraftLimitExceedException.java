@@ -1,12 +1,12 @@
 package exceptions;
 
 public class OverdraftLimitExceedException extends Exception{
-    String msg = "Balance after withdrawal exceeds designated overdraft limit ($";
+    String msg = "Balance after withdrawal exceeds designated overdraft limit ($"; //this is our thrown exception message
     long amt;
 
     public OverdraftLimitExceedException(long amt){
         this.amt = amt;
-        this.msg += String.format("%.2f", (double)amt/100) + ")";
+        this.msg += String.format("%.2f", (double)amt/100) + ")"; 
     }
 
     @Override
