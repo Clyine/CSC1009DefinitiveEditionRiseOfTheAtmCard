@@ -59,12 +59,8 @@ public class ClientHandler extends Thread {
                                 break;
                         }
                     }
-
                 }
             }
-            // System.out.println("Program successful, terminating..");
-            // this.dis.close();
-            // this.dos.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
