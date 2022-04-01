@@ -18,7 +18,7 @@ public class exceptionTest{
 
     @Test
     void getMessageTest(){ // PASSED
-        for(int i = 0; i < MAX; i++){
+        for(int i = 0; i < MAX; i++){               // For loop to loop the program MAX times
             String msg = insuf.getMessage();        // Retrieve message and store in String msg
             assertTrue(msg instanceof String);      // Assert true if message is of type String
         }

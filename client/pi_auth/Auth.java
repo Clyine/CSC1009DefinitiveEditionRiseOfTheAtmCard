@@ -1,5 +1,5 @@
 // RFID card authentication package
-package pi_auth;
+package client.pi_auth;
 // import java io
 import java.io.*;
 //public Auth class

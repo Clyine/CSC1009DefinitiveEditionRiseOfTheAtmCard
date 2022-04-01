@@ -23,7 +23,6 @@ public class Transaction {
 
     @Override
     public String toString(){
-        //String s = String.format("|%1$td/%1$tm/%1$tY   |%2$td/%2$tm/%2$tY   |%3$-9s|%4$-60s|%5$12.2f|%6$12.2f|%7$15.2f|", this.transactionDate, this.valueDate, this.chequeNo, this.description, (float)this.withdraw/100, (float)this.deposit/100, (float)this.runningBalance/100);
         String s = String.format("|%1$s   |%2$s  |%3$-9s|%4$-60s|%5$12.2f|%6$12.2f|%7$15.2f|", this.transactionDate, this.valueDate, this.chequeNo, this.description, (double)this.withdraw/100, (double)this.deposit/100, (double)this.runningBalance/100);
 
         return s;

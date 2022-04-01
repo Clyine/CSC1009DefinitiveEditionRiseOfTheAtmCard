@@ -47,6 +47,7 @@ public class Account {
         this.runningBalance += t.getDeposit() - t.getWithdraw();
     }
 
+    //Helper code for getTransactionListing to convert Transaction objects within list to formatted String
     private String getTransactions(int n){
         String str = "\n";
         if (transactionsList.size() >= n ) {
@@ -63,7 +64,7 @@ public class Account {
         return str;
     }
 
-    public String getTransactionListing(int n){     //menu for the transaction list 
+    public String getTransactionListing(int n){     //Returns formatted Transaction list
         String str = "";
         
         str += String.format("+-------------+------------+---------+------------------------------------------------------------+------------+------------+---------------+");

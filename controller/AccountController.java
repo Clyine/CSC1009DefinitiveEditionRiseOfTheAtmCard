@@ -73,7 +73,13 @@ public abstract class AccountController {
         return newT;
     }
 
-    //Sets the pin of the current account object
+    //Adds a defined transaction object to account.
+    //Transaction data is extracted from database on Server initialisation
+    public Transaction addTransaction(Transaction t) {
+        model.addTransaction(t);
+        return t;
+    }
+
     public String setPin(String pin) {
         return model.setPin(pin);
     }
